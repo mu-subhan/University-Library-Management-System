@@ -4,6 +4,7 @@ import "./globals.css";
 
 import localFont from "next/font/local";
 import { ReactNode } from "react";
+import { Toaster } from "@/components/ui/toaster"
 
 
 
@@ -36,6 +37,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
     <html lang="en">
       <body className={`${ibmPlexSans.className} ${bebasNeue.variable} antialiased`}>
         {children}
+        <Toaster/>
       </body>
     </html>
   );
