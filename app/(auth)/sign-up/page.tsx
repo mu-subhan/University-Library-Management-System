@@ -3,6 +3,7 @@
 import React from 'react'
 import AuthForm from "@/components/AuthForm"
 import { signUpSchema } from '@/lib/validation'
+import { signUp } from '@/lib/action/auth'
 
 const page = () => (
   <AuthForm 
@@ -16,7 +17,7 @@ const page = () => (
     universityCard:"",
 
   }}
-  onSubmit={()=>{}}
+  onSubmit={signUp}
   />
 )
 
