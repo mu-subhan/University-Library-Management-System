@@ -1,5 +1,5 @@
 'use client'
-import { cn, getInitials } from '@/lib/utils'
+import { cn, getInitials } from '@/lib/utils/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
