@@ -19,6 +19,11 @@ import { Button } from "@/components/ui/button";
 import { bookSchema } from "@/lib/validation";
 import FileUpload from "@/components/FileUpload";
 import ColorPicker from "./ColorPicker";
+import { platform } from "os";
+import { Upload } from "lucide-react";
+import { Action } from "@radix-ui/react-toast";
+import { createBook } from "@/lib/admin/actions/book";
+import { toast } from "@/hooks/use-toast";
 
 interface Props extends Partial<Book> {
   type?: "create" | "update";
@@ -43,23 +48,24 @@ const BookForm = ({ type, ...book }: Props) => {
     },
   });
 
+
+
   const onSubmit = async (values: z.infer<typeof bookSchema>) => {
-    console.log(values);
-    // const result = await createBook(values);
+     const result = await createBook(values);
 
-    // if (result.success) {
-    //   toast({
-    //     title: "Success",
-    //     description: "Book created successfully",
-    //   });
+    if (result.success) {
+      toast({
+        title: "Success",
+        description: "Book created successfully",
+      });
 
-    //   router.push(`/admin/books/${result.data.id}`);
-    // } else {
-    //   toast({
-    //     title: "Error",
-    //     description: result.message,
-    //     variant: "destructive",
-    //   });
+      router.push(`/admin/books/${result.data.id}`);
+    } else {
+      toast({
+        title: "Error",
+        description: result.message,
+        variant: "destructive",
+      });
     }
   
 
@@ -287,20 +293,6 @@ const BookForm = ({ type, ...book }: Props) => {
       </form>
     </Form>
   );
- // const result = await createBook(values);
-
-    // if (result.success) {
-    //   toast({
-    //     title: "Success",
-    //     description: "Book created successfully",
-    //   });
-
-    //   router.push(`/admin/books/${result.data.id}`);
-    // } else {
-    //   toast({
-    //     title: "Error",
-    //     description: result.message,
-    //     variant: "destructive",
-    //   });
+  }
 }
-export default BookForm;
+export default BookForm
