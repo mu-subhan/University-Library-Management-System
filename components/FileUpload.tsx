@@ -42,15 +42,16 @@ interface Props{
   folder:string;
   variant: 'dark' | 'light';
   onFileChange: (filePath: string) => void;
+  value?:string
 }
 
 
 const FileUpload = ({
   onFileChange,
-  type,accept,placeholder,folder,variant,
+  type,accept,placeholder,folder,variant,value,
 }: Props) => {
   const ikUploadRef = useRef(null);
-  const [file, setFile] = useState<{ filePath: string } | null>(null);
+  const [file, setFile] = useState<{filePath: string | null}>({filePath: value ?? null,});
   const [progress,setProgress] = useState(0);
 
   const styles={
@@ -144,7 +145,7 @@ const onValidate = (file:File) =>{
         <p className={cn("text-base",styles.placeholder)}>{placeholder}</p>
 
         {file && <p className={cn("upload-filename",styles.text)}>{file.filePath} </p>}
-    {/* {file && <p className="upload-filename">{file.filePath}</p>} */}
+   
     </button>
     {progress > 0 && progress !== 100&& (
       <div className="w-full rounded-full bg-green-200">

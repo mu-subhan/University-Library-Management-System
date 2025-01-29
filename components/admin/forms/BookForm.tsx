@@ -14,15 +14,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
-// import { bookSchema } from "@/lib/validations";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-// import FileUpload from "@/components/FileUpload";
-// import ColorPicker from "@/components/admin/ColorPicker";
-// import { createBook } from "@/lib/admin/actions/book";
-import { toast } from "@/hooks/use-toast";
 import { bookSchema } from "@/lib/validation";
 import FileUpload from "@/components/FileUpload";
+import ColorPicker from "./ColorPicker";
 
 interface Props extends Partial<Book> {
   type?: "create" | "update";
@@ -48,6 +44,7 @@ const BookForm = ({ type, ...book }: Props) => {
   });
 
   const onSubmit = async (values: z.infer<typeof bookSchema>) => {
+    console.log(values);
     // const result = await createBook(values);
 
     // if (result.success) {
@@ -208,10 +205,10 @@ const BookForm = ({ type, ...book }: Props) => {
                 Primary Color
               </FormLabel>
               <FormControl>
-                {/* <ColorPicker
+                <ColorPicker
                   onPickerChange={field.onChange}
                   value={field.value}
-                /> */}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
