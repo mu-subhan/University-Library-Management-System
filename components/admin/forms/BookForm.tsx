@@ -19,9 +19,6 @@ import { Button } from "@/components/ui/button";
 import { bookSchema } from "@/lib/validation";
 import FileUpload from "@/components/FileUpload";
 import ColorPicker from "./ColorPicker";
-import { platform } from "os";
-import { Upload } from "lucide-react";
-import { Action } from "@radix-ui/react-toast";
 import { createBook } from "@/lib/admin/actions/book";
 import { toast } from "@/hooks/use-toast";
 
@@ -48,10 +45,8 @@ const BookForm = ({ type, ...book }: Props) => {
     },
   });
 
-
-
   const onSubmit = async (values: z.infer<typeof bookSchema>) => {
-     const result = await createBook(values);
+    const result = await createBook(values);
 
     if (result.success) {
       toast({
@@ -67,7 +62,7 @@ const BookForm = ({ type, ...book }: Props) => {
         variant: "destructive",
       });
     }
-  
+  };
 
   return (
     <Form {...form}>
@@ -293,6 +288,6 @@ const BookForm = ({ type, ...book }: Props) => {
       </form>
     </Form>
   );
-  }
-}
-export default BookForm
+};
+
+export default BookForm;
