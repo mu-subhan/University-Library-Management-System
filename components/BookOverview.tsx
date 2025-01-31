@@ -14,6 +14,8 @@ const BookOverview = ({
   coverColor,
   coverUrl,
 }:Book) => {
+  console.log("cover iamge is display here",coverUrl);
+  
   return (
     <section className="book-overview">
       <div className="flex flex-1 flex-col gap-5">
