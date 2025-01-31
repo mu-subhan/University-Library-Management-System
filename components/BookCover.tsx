@@ -4,6 +4,7 @@ import React from "react";
 import BookCoverSvg from "./BookCoverSvg";
 import { IKImage } from "imagekitio-next";
 import config from "@/lib/config";
+import Image from "next/image";
 // import Image from "next/image";
 
 
@@ -54,12 +55,12 @@ const BookCover = ({
           lqip={{ active: true }}
         />
 
-        {/* <Image
+        <Image
         src={coverImage}
         alt="book cover"
         fill
         className="rounded-sm object-fill"
-        /> */}
+        />
 
       </div>
     </div>
